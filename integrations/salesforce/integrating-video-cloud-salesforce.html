@@ -1,0 +1,735 @@
+﻿<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>Intégration de Video Cloud avec Salesforce</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><span class="product-logo" style="font-family:'Balto Web','Public Sans';font-size:2em;font-weight:bold;">AUDIENCE DE BRIGHTCOVE<sup>™</sup></span></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Sélectionner la langue</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">Autres documents Brightcove</option>
+      
+        
+          <option value="https://support.brightcove.com">Accueil Documentation</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Audience de Brightcove</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">Balise Brightcove</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">Campagne Brightcove</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engagez</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">Brightcove Social</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">Développement du joueur Brightcove</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">API de la plate-forme Video Cloud</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">SDK pour périphériques Video Cloud</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">Intégrations et connecteurs CMS</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">Informations générales sur Video Cloud</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="assistance"/> Contacter le support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/">État<img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="état du système"/> du système</a></span> <br/>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/integrations/salesforce/">Salesforce</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">Intégration de Video Cloud avec Salesforce</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+        <nav class="sidenav">
+          
+            
+            <h5><a href="/index.html">Accueil</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/get-started/index.html">Mise en route <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/get-started/getting-started-audience-module.html">Démarrer avec l'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/get-started/audience-training-videos.html">Vidéos de formation du public</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">Informations générales <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/audience-fields-and-data-definitions.html">Champs d'audience et définitions de données</a></li>
+                  
+                
+                  
+                    <li><a href="/general/configuring-audience-settings.html">Configuration des paramètres d'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/general/creating-audience-enabled-player.html">Création d'un lecteur compatible avec l'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/general/creating-audience-lead-form.html">Création d'un formulaire de prospecte d'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/general/how-audience-module-identifies-viewers.html">Comment l'audience identifie les spectateurs</a></li>
+                  
+                
+                  
+                    <li><a href="/general/publishing-video-email-using-audience-module.html">Publication d'une vidéo par e-mail</a></li>
+                  
+                
+                  
+                    <li><a href="/general/using-custom-metrics-and-events.html">Utilisation de mesures et d'événements personnalisés</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-player-events-audience-module.html">Affichage des événements du joueur</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-video-activity.html">Affichage de l'activité vidéo</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-viewer-profile-information.html">Affichage des informations sur le profil de l'</a></li>
+                  
+                
+                  
+                    <li><a href="/general/working-utm-fields-audience-module.html">Utilisation des champs UTM</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/integrations/index.html">Intégrations <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/eloqua/index.html">Eloqua <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/eloqua/creating-custom-lead-forms-oracle-eloqua.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/eloqua/eloqua-integration-testing-guide.html">Guide de test d'intégration d'Eloqua</a></li>
+                        
+                        <li><a href="/integrations/eloqua/embedding-video-cloud-video-eloqua-landing-page.html">Intégration d'une vidéo sur une page de destination</a></li>
+                        
+                        <li><a href="/integrations/eloqua/integrating-video-cloud-oracle-eloqua.html">Intégration avec Oracle Eloqua</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/hubspot/index.html">HubSpot <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/hubspot/creating-custom-lead-forms-hubspot.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/hubspot/hubspot-rest-api-integration-testing-guide.html">Guide de test de l'API REST HubSpot</a></li>
+                        
+                        <li><a href="/integrations/hubspot/integrating-video-cloud-hubspot-using-client-side-apis.html">Intégration avec HubSpot (API côté client)</a></li>
+                        
+                        <li><a href="/integrations/hubspot/integrating-video-cloud-hubspot-using-rest-apis.html">Intégration avec HubSpot (API REST)</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/marketo/index.html">Marketo <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/marketo/creating-custom-lead-forms-marketo.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/marketo/integrating-video-cloud-marketo-using-munchkin.html">Intégration avec Marketo (Munchkin)</a></li>
+                        
+                        <li><a href="/integrations/marketo/integrating-video-cloud-marketo-using-rest-apis.html">Intégration avec Marketo (API REST)</a></li>
+                        
+                        <li><a href="/integrations/marketo/marketo-rest-integration-testing-guide.html">Guide de test d'intégration REST Marketo</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/non-map/index.html">Non-carte <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/non-map/creating-custom-integrations-audience-module.html">Création d'intégrations personnalisées</a></li>
+                        
+                        <li><a href="/integrations/non-map/integrating-audience-single-sign.html">Intégration avec Single Sign-On</a></li>
+                        
+                        <li><a href="/integrations/non-map/using-audience-module-track-viewers.html">Utilisation de l'audience pour suivre les visionneuses</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/salesforce/index.html">Salesforce <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/salesforce/creating-custom-lead-forms-salesforce.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/salesforce/creating-custom-lead-forms-salesforce.html">Création d'un objet Salesforce pour Pardot</a></li>
+                        
+                        <li><a href="/integrations/salesforce/integrating-video-cloud-salesforce.html">Intégration avec Salesforce</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/admin/index.html">Administration de l'audience <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/admin/exporting-audience-data-audience-module.html">Exportation de données depuis l'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/admin/exporting-gallery-lead-data.html">Exportation des données de prospec-galerie</a></li>
+                  
+                
+                  
+                    <li><a href="/admin/managing-viewer-data.html">Gestion des données du Viewer</a></li>
+                  
+                
+                  
+                    <li><a href="/admin/troubleshooting-audience-issues.html">Dépannage des problèmes d'audience</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/develop/index.html">Développeurs <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/develop/overview-audience-api.html">Vue d'ensemble : API d'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/develop/reference.html">Référence de l'API d'audience</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html">Support <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/brightcove-answer.html">Réponses Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Affichage de la page État du système Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">Contacter les ventes</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">Ouverture d'un dossier de support</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menu de navigation"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">Contenu de la page</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="ouvrir dans un nouvel onglet" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+  
+    
+
+
+<article class="bcls-article">
+  <h1>Intégration de Video Cloud avec Salesforce</h1>
+  <summary>Cette rubrique explique comment configurer le module Audience pour l'utiliser avec Salesforce.</summary>
+  <section class="bcls-section">
+    <div class="training-video-player-ipx" data-experience="5a73630f7afd7a00101bc1b5" data-video-ids="4867969235001">&nbsp;</div>
+    <script src="https://players.brightcove.net/20318290001/experience_5a73630f7afd7a00101bc1b5/live.js"></script>
+    <p>Le module Audience permet à Video Cloud de synchroniser les données de visionnage des lecteurs Brightcove avec Salesforce. Une fois dans Salesforce, ces données peuvent servir pour les logiques de campagne, les rapports et la personnalisation des communications. L'intégration du module Audience est constituée de deux principaux composants :</p>
+    <ul>
+      <li>un plug-in pour lecteur Brightcove permettant le suivi des données de visionnage ;</li>
+      <li>Processus de synchronisation pour envoyer des données de suivi de Video Cloud à Salesforce</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="requirements">Exigences</h2>
+    <p>Pour utiliser le module Audience avec Salesforce, vous devez :</p>
+    <ul>
+      <li>disposer d'un compte Video Cloud Professional ou Enterprise ;</li>
+      <li>Avoir un compte Salesforce, les comptes sandbox Salesforce ne sont pas pris en charge</li>
+      <li>activer le module Audience pour votre compte en spécifiant les informations requises dans l'écran d'accueil qui s'affiche à l'ouverture du module Audience ;</li>
+      <li>cliquer sur l'accord de service lors de votre première utilisation du module ;</li>
+      <li>disposer d'un compte Salesforce.com avec une autorisation <strong>d'activation d'API</strong> et d'un rôle vous permettant d'accéder en lecture et en écriture à l'objet Salesforce choisi pour recevoir les données de visionnage ;</li>
+      <li>utiliser le code de publication Advanced Embed (in-page) lorsque vous publiez votre lecteur. Le code de publication Standard Embed (iframe) ne fonctionnera pas, car le plug-in sera exécuté à l'intérieur d'un iframe et par conséquent, ne pourra pas accéder aux paramètres de l'URL de la page parente.</li>
+      <li>Si vous comptez utiliser l'intégration Pardot, vous devez suivre les étapes décrites dans le&nbsp;<a href="creating-salesforce-object-pardot.html">Création d'un objet Salesforce personnalisé pour l'intégration Pardot</a>&nbsp;sujet.</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="features">Fonctionnalités</h2>
+    <p>Voici quelques-unes des caractéristiques principales de l'intégration de SalesForce :</p>
+    <ul>
+      <li><strong>Format de données</strong> : les données de visualisation de Video Cloud sont mappées à un objet Salesforce</li>
+      <li><strong>Transfert de données</strong> : les données de visionnage sont transmises de Video Cloud à Salesforce toutes les heures</li>
+      <li><strong>Formulaires de prospect</strong> : créez des formulaires Salesforce qui apparaîtront automatiquement lorsque les spectateurs regardent des vidéos. Pour plus d'informations, voir <a href="/integrations/salesforce/creating-custom-lead-forms-salesforce.html">Création de formulaires de prospect personnalisés pour Salesforce</a>.</li>
+    </ul>
+  </section>
+  <section class="bcls-section">
+    <h2 id="setupconnection">Configuration de la connexion</h2>
+    <p>Pour configurer la connexion entre Video Cloud et Salesforce, procédez comme suit :</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Ouvrez le module Audience et cliquez sur <strong>Connexions de données</strong> dans la navigation de gauche.</li>
+      <li>Cliquez sur <strong>Add New Collection</strong>.</li>
+      <li>Sélectionnez <strong>Salesforce</strong> pour l'intégration.
+        <aside class="bcls-aside bcls-aside--information">Remarque : Les intégrations disponibles sont basées sur votre abonnement Video Cloud.</aside>
+      </li>
+      <li>(Facultatif) Entrez un <strong>nom de connexion</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="sélectionner Salesforce" src="/assets/images/integrations/salesforce/node16123-select-salesforce.png"/></figure>
+      </li>
+      <li>Cliquez sur <strong>Connect</strong>.</li>
+      <li>Cliquez sur <strong>Se connecter à Salesforce</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="se connecter à salesforce" src="/assets/images/integrations/salesforce/node16123-connect-to-salesforce.png"/></figure>
+      </li>
+      <li>Sur l'écran de connexion qui s'affiche, saisissez votre <strong>nom d'utilisateur </strong>et votre <strong>mot de passe</strong> Salesforce. Cliquez sur <strong>Se connecter</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Connexion Salesforce" src="/assets/images/integrations/salesforce/node16123-salesforce-login.png"/></figure>
+      </li>
+      <li>Si la connexion s'établit correctement, vous serez invité à installer l'application <strong>Brightcove Video Connect for Salesforce</strong>. Cliquez sur <strong>Allow</strong> (Autoriser).
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/integrations/salesforce/node16123-bc-connect-salesforce.png"/></figure>
+      </li>
+    </ol>
+    <p>La connexion de Video Cloud à Salesforce est à présent configurée et prête à utiliser.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="configure">Configuration de l'intégration</h2>
+    <p>Une fois la connexion entre Video Cloud et Salesforce établie, vous pouvez configurer l'intégration. Cliquez sur <strong>Salesforce User Info</strong> pour consulter les informations relatives au compte utilisé lors de la configuration de l'intégration.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="options connectées" src="/assets/images/integrations/salesforce/node16123-configure.png"/></figure>
+    <ol class="bcls-tasklist-restart">
+      <li>Pour configurer l'identification de la visionneuse, cliquez sur le lien <strong>Configurer comment les visionneuses sont identifiées</strong> , puis sélectionnez une option : </li>
+      <ul>
+        <li><strong>Pardot</strong> - Pardot est utilisé pour identifier les spectateurs. Reportez-vous à la section <a href="#pardot">Configuration d'une intégration Pardot</a> ci-dessous.</li>
+        <li><strong>Manuel</strong> - Votre personnel de développement sera responsable d'ajouter une logique pour&nbsp;<a href="#identify">identifier les spectateurs</a>.</li>
+      </ul>
+      <li>Sélectionnez un <strong>type de correspondance</strong> et <a href="#configuredata">configurez le mappage des données</a>.</li>
+      <li>Par défaut, l' <strong>état de la connexion</strong> sera <strong>activé</strong>. L' <strong>état de connexion</strong> détermine si les données d'engagement vidéo Video Cloud sont envoyées à Salesforce. </li>
+      <ul>
+        <li><strong>Activé</strong> : les données sont collectées et envoyées à Salesforce</li>
+        <li><strong>Désactivé</strong> - Aucune donnée n'est collectée (l'intégration est désactivée)</li>
+      </ul>
+      <li>Par défaut,&nbsp;<strong>Suivi des données pour les spectateurs inconnus</strong>&nbsp;sera&nbsp;<strong>désactivé</strong>. Ce paramètre détermine si les données d'engagement vidéo sont enregistrées dans Video Cloud lorsque la visionneuse est inconnue. Seules les données des visionneuses connues sont envoyées à Salesforce.
+        <ul>
+          <li><strong>Activé</strong>&nbsp; : les données pour tous les spectateurs sont collectées et enregistrées dans Video Cloud</li>
+          <li><strong>Désactivé</strong>&nbsp;- Les données des visionneuses inconnues ne sont pas enregistrées dans Video Cloud</li>
+        </ul>
+      </li>
+      <li>Sélectionnez une politique de conservation des données. La politique de conservation des données détermine la durée de conservation des données de visionnage et du formulaire de clients potentiels (si vous utilisez un formulaire de clients potentiels Audience) dans votre compte Video Cloud. La conservation des données dans Video Cloud vous permet de récupérer les données en cas de synchronisation interrompue. Par ailleurs, le module Audience continuera de reproduire les événements dont la synchronisation a échoué (généralement parce que le visiteur n'était pas un contact connu au moment du visionnage) jusqu'à ce que la date de ces événements dépasse la période de conservation des données. <strong>Vous devez ajuster les paramètres de rétention en fonction de votre politique de confidentialité</strong> - il n'est pas nécessaire de conserver les données utilisateur dans Video Cloud. Les données seront supprimées après la période de conservation des données.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="options de rétention des données" src="/assets/images/integrations/salesforce/node16123-data-retention-options.png"/></figure>
+      </li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="pardot">Configuration d'une intégration Pardot</h2>
+    <p>Une fois la connexion Brightcove Audience à Salesforce établie, vous pouvez choisir d'utiliser Pardot pour identifier les utilisateurs. Cette section décrit les étapes à suivre pour utiliser Pardot pour identifier les spectateurs.</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">Remarque : Avant de configurer l'intégration Pardot, suivez les étapes décrites dans la rubrique <a href="/integrations/salesforce/creating-salesforce-object-pardot.html">Création d'un objet Salesforce personnalisé pour l'intégration Pardot</a> .</aside>
+    <aside class="bcls-aside bcls-aside--information language-editable">Remarque : Brightcove recommande de créer un compte utilisateur Pardot dédié à utiliser lors de la configuration de l'intégration avec Brightcove Campaign.</aside>
+    <ol class="bcls-tasklist">
+      <li>Cliquez sur le lien <strong>Configurer la façon dont les visionneuses sont identifiées</strong> .</li>
+      <li>Entrez votre <strong>email</strong> et votre <strong>mot de passe</strong> que vous utilisez pour vous connecter à Pardot.</li>
+    </ol>
+    <h3 id="pardot-api-key">Obtenir la clé API Pardot</h3>
+    <p>Pour obtenir la valeur du champ Clé API, procédez comme suit.</p>
+    <ol  class="bcls-tasklist">
+      <li>Connectez-vous à Pardot.</li>
+      <li> Cliquez sur l'icône d'engrenage (<img class="bcls-image--no-border" alt="" src="/assets/images/integrations/salesforce/pardot-gear-icon.png"/>) , puis sur <strong>Paramètres</strong>.</li>
+      <li> Cliquez sur le lien <strong>Mon profil</strong> en haut de la page.</li>
+      <li> Copiez la valeur du champ <strong>Clé utilisateur API</strong> et collez-la dans le champ <strong>Clé utilisateur</strong> .</li>
+    </ol>
+    <h3 id="tracking-ids">Obtenir les ID de suivi</h3>
+    <p>Pour obtenir la valeur des champs <strong>PiALD</strong> de <strong>suivi et PicLD</strong> de suivi, procédez comme suit.</p>
+    <ol class="bcls-tasklist">
+      <li>Dans la navigation de gauche, cliquez sur l'icône <strong>Marketing</strong> , puis sur <strong>Campagnes</strong>.</li>
+      <li> Cliquez sur un nom de campagne (ou ajoutez une campagne s'il n'y a pas de campagne).
+        <aside class="bcls-aside bcls-aside--information">Remarque : Peu importe la campagne que vous sélectionnez, Brightcove Campaign a besoin des deux valeurs pour obtenir le cookie permettant d'identifier le spectateur.</aside>
+      </li>
+      <li> Cliquez sur <strong>Afficher le code de suivi</strong>. Les valeurs <strong>PIAID</strong> et <strong>PICId</strong> seront affichées.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/integrations/salesforce/pardot-tracking-code.png"/></figure>
+      </li>
+      <li>Copiez les valeurs et collez-les dans leurs champs respectifs.
+        <aside class="bcls-aside bcls-aside--information">Remarque : Brightcove Audience ne valide pas les champs PIAID et PICId, mais si des valeurs erronées sont entrées, Brightcove Audience ne pourra pas identifier le spectateur.</aside>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="Type d'intégration salesforce" src="/assets/images/integrations/salesforce/pardot-credentials.png"/></figure>
+      </li>
+      <li>Cliquez sur <strong>Se connecter à Pardot</strong>.</li>
+    </ol>
+    <p>En général, lorsque vous utilisez le type d'intégration Pardot, vous sélectionnez le Type de mappage <strong>avancé</strong> , puis mappez les champs d'affichage à l' <a href="/integrations/salesforce/creating-salesforce-object-pardot.html">objet personnalisé Salesforce</a> que vous avez créé.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="configuredata">Configuration du mappage de données</h2>
+    <p>Le mappage de données détermine comment les vidéos sont mappées vers les champs d'un objet Salesforce. Par défaut, l'intégration sera configurée en utilisant le mappage <strong>simple</strong> qui mappe certaines données de visionnage vers l'objet <strong>Task</strong> de Salesforce.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/integrations/salesforce/node16123-simple-mapping.png"/></figure>
+    <p>Pour personnaliser le mappage de données, procédez comme suit :</p>
+    <ol class="bcls-tasklist-restart">
+      <li>Cliquez sur <strong>Configurer la façon dont les données sont mappées aux champs d'un objet Salesforce</strong> ou cliquez sur le lien <strong>Mappings</strong> .</li>
+      <li>Pour <strong>Mapping Type</strong>, sélectionnez <strong>Advanced</strong>.</li>
+      <li>Dans le menu déroulant <strong>Salesforce Object</strong>, sélectionnez un objet vers lequel mapper les données vidéo.</li>
+      <li>Mapper le <strong>champ de vue</strong> approprié aux champs Salesforce.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/integrations/salesforce/node16123-adv-mapping.png"/></figure>
+      </li>
+      <li>Cliquez sur <strong>Save</strong> pour enregistrer les modifications apportées.</li>
+    </ol>
+    <p>Pour supprimer l'intégration avec Salesforce, cliquez sur <strong>Disconnect</strong>. Le module Audience prend en charge les connexions multiples aux plates-formes de marketing. Cliquez sur <strong>Add New Collection</strong> pour configurer des intégrations supplémentaires.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="player">Création d'un lecteur compatible avec Audience</h2>
+    <p>Les données d'engagement vidéo ne seront envoyées à Salesforce que lorsque vous utilisez un lecteur vidéo compatible Audience. Pour obtenir des informations sur la création d'un lecteur Brightcove compatible avec Audience, consultez la rubrique <a href="/general/creating-audience-enabled-player.html">Création d'un lecteur compatible avec Audience</a>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="trackingid2">Transmission d'un ID de suivi</h2>
+    <p>Le module Audience prend en charge la possibilité de transmettre une valeur d'ID de suivi à Salesforce. L'ID de suivi peut être utilisé pour suivre un ID de campagne par exemple. L'ID de suivi peut être ajouté à l'URL qui affiche le lecteur compatible Audience ou ajouté au code d'intégration du lecteur.</p>
+    <ul>
+      <li>Exemple : Ajoute à l'URL</li>
+    </ul>
+    <pre>
+  http://www.myurl.com/video.html ?<strong>bctrackingid=12345</strong></pre>
+    <ul>
+      <li>Exemple : Ajouté au code d'intégration du joueur</li>
+    </ul>
+    <pre>
+  &lt;vidéo-id="6033402539001" 
+         data-account="1486906377" 
+         data-player="par défaut » 
+         data-embed="par défaut » 
+         ids-application-données 
+         class="video-js »
+         <strong>data-bc-trackingid="12345"</strong> 
+         controls&gt;&lt;/video&gt;
+  &lt;script src="//players.brightcove.net/1486906377/default_default/index.min.js"&gt;&lt;/script&gt;</pre>
+    <p>Audience transmettra ensuite la valeur à Salesforce en tant qu'autre champ synchronisé.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="identify">Identification des visiteurs</h2>
+    <p>Si votre connexion Salesforce est configurée pour utiliser l'identification&nbsp;<strong>manuelle</strong>de la&nbsp;visionneuse, il vous appartient d'identifier les visionneuses.&nbsp;Pour que le suivi du spectateur se produise, l'ID utilisateur doit être transmis en tant que paramètre URL sur la page qui affiche la vidéo. Deux paramètres d'URL sont pris en charge :</p>
+    <ul>
+      <li><strong>bcemail</strong> - Pour transmettre l'adresse e-mail de la visionneuse (par exemple, voir <a href="/general/how-audience-module-identifies-viewers.html#email">cette rubrique</a>)</li>
+      <li><strong>bcsfid</strong> : transmet l'identifiant Salesforce du visiteur</li>
+    </ul>
+    <p>Dans ce cas de figure, les pages d'accès aux vidéos seront accessibles par le biais d'une URL unique générée à des fins de suivi. Le module Audience utilisera alors le Paramètre d'URL pour rechercher l'utilisateur côté serveur et synchroniser les données de visionnage.</p>
+    <p>Pour que le lecteur ou le plug-in puisse lire les paramètres d'URL, vous devez utiliser le code de publication Advanced Embed (in-page). Le code de publication Standard Embed (iframe) ne fonctionnera pas, car le plug-in sera exécuté à l'intérieur d'un iframe et par conséquent, ne pourra pas accéder aux paramètres de l'URL de la page parente.</p>
+    <aside class="bcls-aside bcls-aside--information">Remarque : Par défaut, la table Contact et Prospect permet de rechercher l'ID Salesforce d'une visionneuse. L'audience peut être configurée pour utiliser à la place la table Compte dans Salesforce. Pour l'activer, <a href="https://supportportal.brightcove.com">contactez le support technique Brightcove</a> et demandez, par exemple : « Veuillez configurer mon compte Audience pour utiliser la table Compte Salesforce lors de la recherche d'ID de visionneuse. »</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="sfdata">Affichage des données de visionnage dans Salesforce</h2>
+    <p>À mesure que les vidéos sont visionnées dans des lecteurs Audience, les données de visionnage sont synchronisées dans Salesforce. Si vous sélectionnez l'option de mappage <strong>simple</strong> des données, les données de visionnage apparaissent comme une entrée <strong>Task</strong> dans Salesforce. Si vous utilisez l'option de mappage <strong>Advanced</strong> des données, les données de visionnage apparaissent dans l'objet Salesforce sélectionné lors de la configuration du mappage. Dans l'exemple suivant, le mappage de données <strong>avancé</strong> a été utilisé et les champs vidéo ont été mappés à un objet Salesforce <strong>BC Video View</strong> personnalisé.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="enregistrement de la tâche" src="/assets/images/integrations/salesforce/salesforce-bc-video-view-record.png"/></figure>
+    <p>Cliquez sur le nom de la vidéo pour afficher des informations détaillées.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="détail de la tâche" src="/assets/images/integrations/salesforce/salesforce-bc-video-view-detail.png"/></figure>
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">Contenu de la page</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  Page mise à jour le 02 sept. 2020
+</div>
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Assistance Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">État du système</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contacter le support</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">Documentation</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>Formation</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Cours en ligne</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">S' inscrire à un cours</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Université de Brightcove</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">BrightCove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contactez-nous</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove, Inc. Tous droits réservés.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">Confidentialité</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Termes et conditions</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(2, 28, 146);color:Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">Avez-vous des questions ? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
