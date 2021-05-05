@@ -1,0 +1,641 @@
+﻿<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>Intégration de l'audience avec l'authentification unique</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><span class="product-logo" style="font-family:'Balto Web','Public Sans';font-size:2em;font-weight:bold;">AUDIENCE DE BRIGHTCOVE<sup>™</sup></span></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Sélectionner la langue</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="assistance"/> Contacter le support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/">État<img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="état du système"/> du système</a></span> <br/>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/integrations/non-map/">Non-carte</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">Intégration de l'audience avec l'authentification unique</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+            <div class="col-sm-3 left-side-bar">
+        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+          <option value="">Autres documents Brightcove</option>
+          
+            
+              <option value="https://support.brightcove.com">Accueil Documentation</option>
+            
+          
+            
+              <option value="https://audience.support.brightcove.com">Audience de Brightcove</option>
+            
+          
+            
+              <option value="https://beacon.support.brightcove.com">Balise Brightcove</option>
+            
+          
+            
+              <option value="https://campaign.support.brightcove.com">Campagne Brightcove</option>
+            
+          
+            
+              <option value="https://engage.support.brightcove.com">Brightcove Engagez</option>
+            
+          
+            
+              <option value="https://live.support.brightcove.com">Brightcove Live</option>
+            
+          
+            
+              <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+            
+          
+            
+              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+            
+          
+            
+              <option value="https://social.support.brightcove.com">Brightcove Social</option>
+            
+          
+            
+              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+            
+          
+            
+              <option value="https://player.support.brightcove.com">Développement du joueur Brightcove</option>
+            
+          
+            
+              <option value="https://apis.support.brightcove.com">API de la plate-forme Video Cloud</option>
+            
+          
+            
+              <option value="https://sdks.support.brightcove.com">SDK pour périphériques Video Cloud</option>
+            
+          
+            
+              <option value="https://integrations.support.brightcove.com">Intégrations et connecteurs CMS</option>
+            
+          
+            
+              <option value="https://general.support.brightcove.com">Informations générales sur Video Cloud</option>
+            
+          
+            
+              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+            
+          
+        </select>
+
+        <nav class="sidenav">
+          
+            
+            <h5><a href="/index.html">Accueil</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/get-started/index.html">Mise en route <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/get-started/getting-started-audience-module.html">Démarrer avec l'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/get-started/audience-training-videos.html">Vidéos de formation du public</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">Informations générales <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/audience-fields-and-data-definitions.html">Champs d'audience et définitions de données</a></li>
+                  
+                
+                  
+                    <li><a href="/general/configuring-audience-settings.html">Configuration des paramètres d'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/general/creating-audience-enabled-player.html">Création d'un lecteur compatible avec l'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/general/creating-audience-lead-form.html">Création d'un formulaire de prospecte d'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/general/how-audience-module-identifies-viewers.html">Comment l'audience identifie les spectateurs</a></li>
+                  
+                
+                  
+                    <li><a href="/general/publishing-video-email-using-audience-module.html">Publication d'une vidéo par e-mail</a></li>
+                  
+                
+                  
+                    <li><a href="/general/using-custom-metrics-and-events.html">Utilisation de mesures et d'événements personnalisés</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-player-events-audience-module.html">Affichage des événements du joueur</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-video-activity.html">Affichage de l'activité vidéo</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-viewer-profile-information.html">Affichage des informations sur le profil de l'</a></li>
+                  
+                
+                  
+                    <li><a href="/general/working-utm-fields-audience-module.html">Utilisation des champs UTM</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/integrations/index.html">Intégrations <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/eloqua/index.html">Eloqua <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/eloqua/creating-custom-lead-forms-oracle-eloqua.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/eloqua/eloqua-integration-testing-guide.html">Guide de test d'intégration d'Eloqua</a></li>
+                        
+                        <li><a href="/integrations/eloqua/embedding-video-cloud-video-eloqua-landing-page.html">Intégration d'une vidéo sur une page de destination</a></li>
+                        
+                        <li><a href="/integrations/eloqua/integrating-video-cloud-oracle-eloqua.html">Intégration avec Oracle Eloqua</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/hubspot/index.html">HubSpot <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/hubspot/creating-custom-lead-forms-hubspot.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/hubspot/hubspot-rest-api-integration-testing-guide.html">Guide de test de l'API REST HubSpot</a></li>
+                        
+                        <li><a href="/integrations/hubspot/integrating-video-cloud-hubspot-using-client-side-apis.html">Intégration avec HubSpot (API côté client)</a></li>
+                        
+                        <li><a href="/integrations/hubspot/integrating-video-cloud-hubspot-using-rest-apis.html">Intégration avec HubSpot (API REST)</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/marketo/index.html">Marketo <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/marketo/creating-custom-lead-forms-marketo.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/marketo/integrating-video-cloud-marketo-using-munchkin.html">Intégration avec Marketo (Munchkin)</a></li>
+                        
+                        <li><a href="/integrations/marketo/integrating-video-cloud-marketo-using-rest-apis.html">Intégration avec Marketo (API REST)</a></li>
+                        
+                        <li><a href="/integrations/marketo/marketo-rest-integration-testing-guide.html">Guide de test d'intégration REST Marketo</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/non-map/index.html">Non-carte <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/non-map/creating-custom-integrations-audience-module.html">Création d'intégrations personnalisées</a></li>
+                        
+                        <li><a href="/integrations/non-map/integrating-audience-single-sign.html">Intégration avec Single Sign-On</a></li>
+                        
+                        <li><a href="/integrations/non-map/using-audience-module-track-viewers.html">Utilisation de l'audience pour suivre les visionneuses</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+                  
+                    <li class="submenu-header">
+                      <a href="/integrations/salesforce/index.html">Salesforce <strong>+</strong></a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                        
+                        <li><a href="/integrations/salesforce/creating-custom-lead-forms-salesforce.html">Création de formulaires de prospecs personnalisés</a></li>
+                        
+                        <li><a href="/integrations/salesforce/creating-custom-lead-forms-salesforce.html">Création d'un objet Salesforce pour Pardot</a></li>
+                        
+                        <li><a href="/integrations/salesforce/integrating-video-cloud-salesforce.html">Intégration avec Salesforce</a></li>
+                        
+                      </ul>
+                    </li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/admin/index.html">Administration de l'audience <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/admin/exporting-audience-data-audience-module.html">Exportation de données depuis l'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/admin/exporting-gallery-lead-data.html">Exportation des données de prospec-galerie</a></li>
+                  
+                
+                  
+                    <li><a href="/admin/managing-viewer-data.html">Gestion des données du Viewer</a></li>
+                  
+                
+                  
+                    <li><a href="/admin/troubleshooting-audience-issues.html">Dépannage des problèmes d'audience</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/develop/index.html">Développeurs <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/develop/overview-audience-api.html">Vue d'ensemble : API d'audience</a></li>
+                  
+                
+                  
+                    <li><a href="/develop/reference.html">Référence de l'API d'audience</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html">Support <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Affichage de la page État du système Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">Contacter les ventes</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">Ouverture d'un dossier de support</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menu de navigation"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">Contenu de la page</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="ouvrir dans un nouvel onglet" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+  
+    
+
+
+<article class="bcls-article">
+  <h1>Intégration de l'audience avec l'authentification unique</h1>
+  <summary>Cette rubrique explique comment configurer le module Audience pour une utilisation avec l'authentification unique.</summary>
+  <section class="bcls-section">
+    <p>Le module Audience permet de suivre l'activité de visualisation lorsque la visionneuse s'est connectée à un système à l'aide de l'authentification unique (SSO). Dans ce scénario, l'affichage des données n'est pas envoyé à une plate-forme d'automatisation marketing. Avec une configuration Audience SSO, les attributs SAML sont transmis à Audience pour identifier la visionneuse. Un cas d'utilisation courant pour cela serait les vidéos de formation internes. Les employés peuvent être tenus de se connecter pour regarder des vidéos, puis leur activité de visionnage peut être suivie et visualisée dans le module Audience. Pour activer Audience à utiliser avec SSO, les étapes suivantes sont requises :</p>
+    <ol>
+      <li><a href="#sso">Configurer le logiciel d'authentification unique</a></li>
+      <li><a href="#attributes">Configurer votre application pour accéder aux attributs SSO</a></li>
+      <li><a href="#setupConnection">Configuration de la connexion SSO Audience</a></li>
+      <li><a href="#configure">Configurer l'intégration</a></li>
+      <li><a href="#player">Créer un lecteur compatible avec l'auditoire</a></li>
+      <li><a href="#viewdata">Afficher les données vidéo</a></li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="sso">Configuration du logiciel SSO</h2>
+    <p>Les étapes d'installation et de configuration du logiciel SSO ne sont pas couvertes par cette rubrique. Le logiciel SSO doit être configuré de sorte que les utilisateurs doivent s'authentifier avant de pouvoir visualiser les vidéos Video Cloud. Le logiciel SSO doit être configuré pour exposer certains attributs utilisateur afin qu'ils puissent être accessibles à partir d'une application externe. Par exemple, cette configuration SSO Okta expose trois attributs <code translate="No">FirstName</code>, <code translate="No">LastName</code> et <code translate="No">Email</code>.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="configuration okta" src="/assets/images/general/node18363-okta.png"/></figure>
+    <p>Dans cette rubrique, l' <code translate="No">Email</code> attribut sera utilisé pour identifier les spectateurs dans le module Audience.</p>
+    <aside class="bcls-aside bcls-aside--information">Remarque : Même si votre logiciel SSO peut être configuré pour exposer plusieurs attributs, Audience n'utilise qu'un seul attribut pour suivre les visionneuses.</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="attributes">Configuration d'une application pour accéder aux attributs SSO</h2>
+    <p>L'application ou le site Web qui sera utilisé pour visualiser les vidéos Video Cloud doit être configuré de manière à ce que les attributs SSO soient mis à la disposition du public à l'aide de JavaScript. Cette configuration varie en fonction de l'application ou du site Web utilisé. Dans l'exemple suivant, un profil de contrôle d'accès SSO a été créé dans Gallery. Dans le cadre de la configuration, l'attribut <code translate="No">Email</code> SSO est en cours d'exposition et sera disponible dans le site Gallery. Il s'agit de la valeur qui sera utilisée pour identifier les spectateurs dans le module Audience.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="configuration okta" src="/assets/images/general/node18363-gallery-config.png"/></figure>
+    <aside class="bcls-aside bcls-aside--information">Remarque : Pour plus d'informations sur la configuration des profils de contrôle d'accès dans la Galerie, voir <a href="https://gallery.support.brightcove.com/settings/configuring-access-control-profiles.html">Configuration des profils de contrôle d'accès</a>.</aside>
+    <aside class="bcls-aside bcls-aside--information">Remarque : Même si Gallery peut être configuré pour exposer plusieurs attributs, Audience n'utilise qu'un seul attribut pour suivre les visionneuses.</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="setupConnection">Configuration de la connexion</h2>
+    <p>Procédez comme suit pour configurer la connexion entre Video Cloud et votre fournisseur SSO.</p>
+    <h3 id="establishConnection2">Établissement de la connexion entre Video Cloud et SSO</h3>
+    <ol class="bcls-tasklist-restart">
+      <li>Ouvrez le module Audience et cliquez sur <strong>Connexions de données</strong> dans la navigation de gauche.</li>
+      <li>Cliquez sur <strong>Add New Collection</strong>.</li>
+      <li>Sélectionnez <strong>SSO</strong> comme intégration.
+        <aside class="bcls-aside bcls-aside--information">Remarque : Les intégrations disponibles sont basées sur votre abonnement Video Cloud.</aside>
+      </li>
+      <li>(Facultatif) Entrez un <strong>nom de connexion</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="configuration de l'audience" src="/assets/images/general/node18363-setup-section.png"/></figure>
+      </li>
+      <li>Cliquez sur <strong>Connect</strong>.</li>
+    </ol>
+    <p>La connexion SSO est maintenant configurée et prête à l'emploi.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="configure">Configuration de l'intégration</h2>
+    <p>Une fois la connexion SSO établie, vous pouvez configurer l'intégration.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="options connectées" src="/assets/images/general/node18363-connected-options.png"/></figure>
+    <ol class="bcls-tasklist-restart">
+      <li>Cliquez sur le <code translate="No">empty</code> lien dans la section <strong>Propriété SSO</strong> . Entrez le nom de la valeur JavaScript à rechercher dans la page. Dans cet exemple, Gallery a été configuré pour exposer l'attribut <code translate="No">Email</code> SSO de sorte que c'est ce qui est utilisé ici.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="attribut email" src="/assets/images/general/node18363-email-attribute.png"/></figure>
+        <p>Dans cette rubrique, l'intégration Audience SSO sera utilisée pour suivre l'activité de visualisation. Cliquez sur <strong>Save</strong>.</p>
+        <aside class="bcls-aside bcls-aside--information">Remarque : Il est également possible de laisser la <strong>propriété SSO</strong> vide, puis d'utiliser l'une des <a href="#identify">options supplémentaires</a> pour identifier les spectateurs.</aside>
+      </li>
+      <li>Par défaut, <strong>Integration Status</strong> est défini sur <strong>Enabled</strong>. L'option <strong>Integration Status</strong> détermine si les données d'engagement des vidéos de Video Cloud seront enregistrées ou non.
+        <ul>
+          <li><strong>Activé</strong> - Les données sont collectées</li>
+          <li><strong>Désactivé</strong> - Aucune donnée n'est collectée (l'intégration est désactivée)</li>
+        </ul>
+      </li>
+      <li>Sélectionnez une politique de conservation des données. La politique de conservation des données détermine la durée de conservation des données de visionnage et du formulaire de clients potentiels (si vous utilisez un formulaire de clients potentiels Audience) dans votre compte Video Cloud. <strong>Vous devez ajuster les paramètres de rétention en fonction de votre politique de confidentialité</strong>.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="options de rétention des données" src="/assets/images/general/node18363-data-retention-options.png"/></figure>
+      </li>
+    </ol>
+    <p>Pour supprimer l'intégration, cliquez sur <strong>Déconnecter</strong>. Le bas de la page répertorie tous les lecteurs compatibles Audience, les connexions avec lesquels ils sont associés et les formulaires de prospect associés.</p>
+    <p>Le module Audience prend en charge les connexions multiples aux plates-formes de marketing. Cliquez sur <strong>Add New Collection</strong> pour configurer des intégrations supplémentaires.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="identify">Options supplémentaires pour identifier les spectateurs</h2>
+    <p>Si vous ne spécifiez pas de valeur pour la <strong>propriété SSO </strong>lorsque l'intégration est configurée, vous êtes responsable de l'identification des visionneuses. Le module Audience a besoin des informations suivantes :</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Description</th>
+          <th>Paramètre d'URL</th>
+          <th>Paramètre d'intégration</th>
+          <th>Montant</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Quel est le GUID ? (Nécessaire pour le suivi des événements de visionnage)</td>
+          <td><code translate="No">bcssoguid</code></td>
+          <td><code translate="No">data-bc-sso-guid</code></td>
+          <td><code translate="No">string</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Ce paramètre peut être transmis via un paramètre URL ou via le code d'intégration du lecteur. Pour que le suivi des visionneuses se produise, ce paramètre doit être passé en tant que paramètre URL sur la page qui affiche la vidéo.</p>
+    <aside class="bcls-aside bcls-aside--information">Remarque : Pour que le lecteur/plugin lise le paramètre URL, le code d'intégration Advanced (in-page) doit être utilisé. Le code d'intégration Standard (iframe) ne fonctionnera pas car le plugin sera exécuté à l'intérieur d'un iframe et n'est donc pas en mesure d'accéder à l'URL de la page parent qui a le paramètre.</aside>
+    <p>Vous avez également la possibilité de transférer le GUID au lecteur Audience à l'aide d'une valeur JavaScript disponible dans la page. Si vous utilisez la configuration du lecteur, vous pouvez transférer le nom de la variable JavaScript au lecteur Audience pour que celui-ci tente de la lire en tant que GUID personnalisé. Pour ce faire, modifiez le lecteur Audience et configurez les options de plug-in pour le plug-in Audience.</p>
+    <figure class="bcls-figure"><img class="bcls-image--no-border" alt="paramètres de plug-in" src="/assets/images/general/node18363-plugin-params.png"/></figure>
+    <p>Dans l'exemple ci-dessus, la configuration du lecteur informe le lecteur Audience qu'il existe un objet JavaScript appelé <code translate="No">samlAttributes</code> dans la page et qu'il dispose d'une propriété appelée <code translate="No">nameID</code>. Audience tentera alors de lire cet objet d'utiliser sa valeur pour le GUID personnalisé.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="player">Création d'un lecteur compatible avec Audience</h2>
+    <p>Les données d'engagement vidéo ne seront suivies que lorsque vous utilisez un lecteur vidéo compatible Audience. Pour obtenir des informations sur la création d'un lecteur Brightcove compatible avec Audience, consultez la rubrique <a href="/general/creating-audience-enabled-player.html">Création d'un lecteur compatible avec Audience</a>.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="viewdata">Affichage des données vidéo</h2>
+    <p>Plusieurs options sont disponibles pour visualiser des données vidéo lors de l'utilisation d'une intégration SSO :</p>
+    <ul>
+      <li><strong>Activités du spectateur (Événements)</strong> - Fait partie du module Audience, cette option peut être utilisée pour visualiser des données vidéo dans le module Audience. Pour plus d'informations, voir <a href="/general/viewing-player-events-audience-module.html">Affichage des événements du lecteur dans le module Audience</a>.</li>
+      <li><strong>Profils de visionneuse</strong> - Fait partie du module Audience, cette option peut être utilisée pour visualiser des données vidéo en fonction d'une valeur de profil utilisateur dans le module Audience. Pour plus d'informations, voir <a href="/general/viewing-viewer-profile-information.html">Affichage des informations de profil de la visionneuse</a></li>
+      <li><strong>Exporter les données</strong> - Fait partie du module Audience, cette option peut être utilisée pour exporter des données de vue vidéo et de prospect. Pour plus d'informations, voir <a href="/admin/exporting-audience-data-audience-module.html">Exportation de données d'audience à partir du module Audience</a>.</li>
+      <li><strong>API Audience</strong> - L'API Audience peut être utilisée pour extraire par programme des données de vue vidéo et de prospect. Pour plus d'informations, consultez <a href="/develop/overview-audience-api.html">Généralités : API d'audience</a>.</li>
+    </ul>
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">Contenu de la page</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<footer class="bcls-footer" role="contentinfo">  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Assistance Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">État du système</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contacter le support</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">Documentation</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>Formation</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Cours en ligne</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">S' inscrire à un cours</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Université de Brightcove</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">BrightCove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contactez-nous</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove, Inc. Tous droits réservés.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">Confidentialité</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Termes et conditions</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
