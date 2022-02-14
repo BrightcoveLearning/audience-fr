@@ -1,0 +1,126 @@
+- section:
+  name: Accueil
+  url: /index.html
+- section:
+  name: Commencer
+  url: /get-started/index.html
+  icon: '<img class="bcls-icon" src="/assets/images/feather/play.svg">'
+  docs:
+    - name: Premiers pas avec le public
+      url: /get-started/getting-started-audience-module.html
+    - name: Vidéos de formation du public
+      url: /get-started/audience-training-videos.html
+- section:
+  name: Informations générales
+  icon: '<i data-feather="info"></i>'
+  url: /general/index.html
+  docs:
+    - name: Champs d'audience et définitions de données
+      url: /general/audience-fields-and-data-definitions.html
+    - name: Configuration des paramètres d'audience
+      url: /general/configuring-audience-settings.html
+    - name: Création d'un lecteur compatible avec le public
+      url: /general/creating-audience-enabled-player.html
+    - name: Création d'un formulaire de piste d'audience
+      url: /general/creating-audience-lead-form.html
+    - name: Comment l'audience identifie les téléspectateurs
+      url: /general/how-audience-module-identifies-viewers.html
+    - name: Publication d'une vidéo par e-mail
+      url: /general/publishing-video-email-using-audience-module.html
+    - name: Utilisation de métriques et d'événements personnalisés
+      url: /general/using-custom-metrics-and-events.html
+    - name: Affichage des événements de joueur
+      url: /general/viewing-player-events-audience-module.html
+    - name: Affichage de l'activité vidéo
+      url: /general/viewing-video-activity.html
+    - name: Affichage des informations sur le profil de la visionneuse
+      url: /general/viewing-viewer-profile-information.html
+    - name: Utilisation des champs UTM
+      url: /general/working-utm-fields-audience-module.html
+- section:
+  name: Intégrations
+  url: /integrations/index.html
+  docs:
+    - name: Éloqua
+      url: /integrations/eloqua/index.html
+      docs:
+        - name: Création de formulaires pour prospects personnalisés
+          url: /integrations/eloqua/creating-custom-lead-forms-oracle-eloqua.html
+        - name: Guide de test d'intégration Eloqua
+          url: /integrations/eloqua/eloqua-integration-testing-guide.html
+        - name: Intégrer une vidéo sur une page de destination
+          url: /integrations/eloqua/embedding-video-cloud-video-eloqua-landing-page.html
+        - name: Intégration avec Oracle Eloqua
+          url: /integrations/eloqua/integrating-video-cloud-oracle-eloqua.html
+    - name: Hub Spot
+      url: /integrations/hubspot/index.html
+      docs:
+        - name: Création de formulaires pour prospects personnalisés
+          url: /integrations/hubspot/creating-custom-lead-forms-hubspot.html
+        - name: Guide de test de l'API REST HubSpot
+          url: /integrations/hubspot/hubspot-rest-api-integration-testing-guide.html
+        - name: 'Intégration avec HubSpot (API côté client)'
+          url: /integrations/hubspot/integrating-video-cloud-hubspot-using-client-side-apis.html
+        - name: 'Intégration avec HubSpot (API REST)'
+          url: /integrations/hubspot/integrating-video-cloud-hubspot-using-rest-apis.html
+    - Marketoname: 
+      url: /integrations/marketo/index.html
+      docs:
+        - name: Création de formulaires pour prospects personnalisés
+          url: /integrations/marketo/creating-custom-lead-forms-marketo.html
+        - name: 'Intégration avec Marketo (Munchkin)'
+          url: /integrations/marketo/integrating-video-cloud-marketo-using-munchkin.html
+        - name: 'Intégration avec Marketo (API REST)'
+          url: /integrations/marketo/integrating-video-cloud-marketo-using-rest-apis.html
+        - name: Guide de test d'intégration REST de Marketo
+          url: /integrations/marketo/marketo-rest-integration-testing-guide.html
+    - Non-MAPname: 
+      url: /integrations/non-map/index.html
+      docs:
+        - name: Création d'intégrations personnalisées
+          url: /integrations/non-map/creating-custom-integrations-audience-module.html
+        - name: Intégration avec l'authentification unique
+          url: /integrations/non-map/integrating-audience-single-sign.html
+        - name: Utiliser l'audience pour suivre les spectateurs
+          url: /integrations/non-map/using-audience-module-track-viewers.html
+    - name: Force de vente
+      url: /integrations/salesforce/index.html
+      docs:
+        - name: Création de formulaires pour prospects personnalisés
+          url: /integrations/salesforce/creating-custom-lead-forms-salesforce.html
+        - name: Création d'un objet Salesforce pour Pardot
+          url: /integrations/salesforce/creating-salesforce-object-pardot.html
+        - name: Intégration avec Salesforce
+          url: /integrations/salesforce/integrating-video-cloud-salesforce.html
+- section:
+  name: Administrer le public
+  url: /admin/index.html
+  docs:
+    - name: Exportation des données de l'audience
+      url: /admin/exporting-audience-data-audience-module.html
+    - name: Exportation des données de piste de la galerie
+      url: /admin/exporting-gallery-lead-data.html
+    - name: Gestion des données de la visionneuse
+      url: /admin/managing-viewer-data.html
+    - name: Dépannage des problèmes d'audience
+      url: /admin/troubleshooting-audience-issues.html
+- section:
+  name: Développeurs
+  url: /develop/index.html
+  docs:
+    - name: 'Aperçu: API d'audience'
+      url: /develop/overview-audience-api.html
+    - name: 'Référence de l'API d'audience'
+      url: /develop/reference.html
+- section:
+  name: Soutien
+  url: /support/index.html
+  docs:
+    - name: 'Affichage de la page d'état du système Brightcove'
+      url: '/support/viewing-brightcove-system-status-page.html'
+    - name: 'Contacter le service commercial'
+      url: '/support/contact-sales.html'
+    - name: 'Ouvrir un dossier d'assistance'
+      url: '/support/opening-case-with-brightcove-support.html'
+    - name: 'Réinitialiser votre mot de passe de portail d'assistance'
+      url: '/support/reset-support-portal-password.html'
